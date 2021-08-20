@@ -14,3 +14,10 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.5'
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources"
+        }
+    }
+}
