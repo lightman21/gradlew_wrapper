@@ -34,9 +34,15 @@ public class GradleWrapperMain {
     public static final String GRADLE_QUIET_DETAILED_OPTION = "quiet";
 
     public static void main(String[] args) throws Exception {
+
+        L.log("-----------------add by th----------------------");
+
         File wrapperJar = wrapperJar();
         File propertiesFile = wrapperProperties(wrapperJar);
         File rootDir = rootDir(wrapperJar);
+
+        L.log("wrapperJar path " + wrapperJar.getAbsolutePath());
+        L.log("rootDir path " + rootDir.getAbsolutePath());
 
         CommandLineParser parser = new CommandLineParser();
         parser.allowUnknownOptions();
@@ -45,14 +51,12 @@ public class GradleWrapperMain {
 
         SystemPropertiesCommandLineConverter converter = new SystemPropertiesCommandLineConverter();
         converter.configure(parser);
-
         ParsedCommandLine options = parser.parse(args);
-
         Properties systemProperties = System.getProperties();
         systemProperties.putAll(converter.convert(options, new HashMap<String, String>()));
 
         File gradleUserHome = gradleUserHome(options);
-
+        L.log("gradleUserHome path " + gradleUserHome.getAbsolutePath());
         addSystemProperties(gradleUserHome, rootDir);
 
         Logger logger = logger(options);

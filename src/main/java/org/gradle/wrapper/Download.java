@@ -37,6 +37,7 @@ public class Download implements IDownload {
         this.appName = appName;
         this.appVersion = appVersion;
         this.progressListener = progressListener;
+        L.log("Download.java constructor --> appName = " + appName  + ", appVersion " + appVersion);
         configureProxyAuthentication();
     }
 
@@ -48,6 +49,7 @@ public class Download implements IDownload {
 
     public void download(URI address, File destination) throws Exception {
         destination.getParentFile().mkdirs();
+        L.log("Download.download " + address.toASCIIString() + ",dest " + destination.getAbsolutePath());
         downloadInternal(address, destination);
     }
 

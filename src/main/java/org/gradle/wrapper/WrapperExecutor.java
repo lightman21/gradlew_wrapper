@@ -105,6 +105,7 @@ public class WrapperExecutor {
 
     public void execute(String[] args, Install install, BootstrapMainStarter bootstrapMainStarter) throws Exception {
         File gradleHome = install.createDist(config);
+        L.log("WrapperExecutor.java gradleHome = " + gradleHome.getAbsolutePath());
         bootstrapMainStarter.start(args, gradleHome);
     }
 

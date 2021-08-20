@@ -41,6 +41,8 @@ public class Install {
         final URI distributionUrl = configuration.getDistribution();
         final String distributionSha256Sum = configuration.getDistributionSha256Sum();
 
+        L.log("createDist distributionUrl " + distributionUrl.toASCIIString());
+
         final PathAssembler.LocalDistribution localDistribution = pathAssembler.getDistribution(configuration);
         final File distDir = localDistribution.getDistributionDir();
         final File localZipFile = localDistribution.getZipFile();
